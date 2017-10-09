@@ -1,0 +1,13 @@
+Here is the script bash/python script that takes list of hostnames (comma separated) as an argument.
+This script, when executed, will connect to all the servers via. SSH (standard port) (assumeed password-less connectivity) and give a single prompt to the user.
+When the user executes a command on this prompt, the script should run the command on all connected servers and display the output.
+
+Make the script Executable:
+
+chmod 777 script.sh
+
+Now run the script along with the arguments
+
+./script.sh host1,host2
+
+NOTE: Hostname should have DNS entry or host file entry.

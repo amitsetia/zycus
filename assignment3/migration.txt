@@ -1,0 +1,27 @@
+AWS SERVICES USED :
+1) Amazon Elastic Beanstalk
+2) Elastic Load Balancer
+3) Auto Scaling
+4) EC2 Instances
+5) VPC , Security Groups, IAM Roles
+6) Relational Database Service - Sql and No Sql
+7) SQS
+8) Route 53
+
+To make this infra as HA we will use 2 AWS insantances for Apache Web Server and Apache tomcat.Load will be distributed at the Load balancer end.
+
+Step1. Setup of the apache Webserver behind the Load Balancer.By using the Proxy/ProxyPass we will connect the apache server to the tomcat.
+
+Step2. Setup of the two apache Tomcat instance EC2/Elastic Beanstalk  and sync the data from the existing infra.In case of Beanstalk we will provide the WAR file during Beanstalk Environment creation.
+
+Step3. For Database  we will use RDS,during setup of RDS we will select the Oracle product.If the load is heavy on the website/App we will setup a read replica.We have to restore the database from the existing infra to the RDS.
+
+Step4. For Messaging Queue we will AWS SQS(Simple Queue Service).
+
+Step5. In case of autoscaling we will have to freeze an Image of the existing Webserver or tomcat server after that we will configure the Launch configurations.Now we will create the auto scaling policies based on the CPU load/Average requests.
+
+Step6. In place of MongoDB we will use the DynamoDB.or we can create the MongoDB cluster on the EC2 instances.
+
+Note: We will use IAM roles for the service authentications/connectivity.
+
+After migration completed we will check the site/app by  host file entry,after the confirmation that everything working perfect we will change the DNS record.
